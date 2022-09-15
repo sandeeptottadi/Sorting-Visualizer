@@ -1,0 +1,175 @@
+.App {
+  position: relative;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: #d9dbdd;
+  overflow: hidden;
+}
+
+.nav {
+  background-image: linear-gradient(#34495e, #2a425a);
+  width: 100%;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 5px;
+  height: fit-content;
+  font-family: monospace;
+}
+
+.title {
+  position: relative;
+  padding: 15px;
+  left: 0%;
+  color: rgb(218, 218, 218);
+  font-size: 24px;
+  cursor: pointer;
+  font-family: monospace;
+  font-weight: 700;
+}
+
+.elements {
+  height: 100%;
+  padding: 0;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.sort {
+  margin: 15px;
+  color: #b3d9ff;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  border: #fff 1px solid;
+  padding-inline: 20px;
+  height: 50%;
+  font-family: monospace;
+}
+
+.sort:hover {
+  background-color: #333;
+}
+
+.nav-element:not(.sort) {
+  position: relative;
+  margin: 15px;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  color: rgb(240, 240, 240);
+}
+
+.nav-element::after {
+  position: absolute;
+  bottom: 0%;
+  left: 0;
+  right: 0;
+  content: "";
+  width: 100%;
+  height: 1px;
+  transform: scale(0);
+  background-color: white;
+  transition: all 0.5s ease-in-out;
+}
+
+.nav-element:hover::after {
+  transform: scale(1);
+}
+
+.nav-element:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.col {
+  width: 20px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  margin-right: 15px;
+  width: 200px;
+  height: 7px;
+  background: #d9dbdd;
+  border-radius: 5px;
+  background-size: 70% 100%;
+  background-repeat: no-repeat;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #6399f1;
+  cursor: ew-resize;
+  box-shadow: 10 10 2px #555;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+.block {
+  background-color: #6399f1;
+}
+
+@media (max-width: 1100px) {
+  .title {
+    font-size: 20px;
+    text-align: center;
+  }
+  .nav {
+    font-size: 12px;
+    justify-content: center;
+  }
+  input[type="range"] {
+    width: 150px;
+  }
+}
+
+@media (max-width: 920px) {
+  .title {
+    font-size: 15px;
+    padding: 10px;
+  }
+  .nav {
+    font-size: 11px;
+  }
+  input[type="range"] {
+    width: 120px;
+  }
+  .nav-element:not(.sort) {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 460px) {
+  .title {
+    font-size: 12px;
+    padding: 8px;
+  }
+  .nav {
+    font-size: 9px;
+  }
+  input[type="range"] {
+    width: 100px;
+  }
+  .nav-element:not(.sort) {
+    margin-left: 7px;
+  }
+}
