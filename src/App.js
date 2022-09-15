@@ -51,7 +51,7 @@ function App() {
           <input
             ref={input_range}
             type="range"
-            min="10"
+            min="5"
             max="100"
             defaultValue={50}
             onChange={() => inputChanged()}
