@@ -52,8 +52,10 @@
   align-items: center;
   font-weight: 700;
   border: #fff 1px solid;
+  padding-top: 5px;
+  padding-bottom: 5px;
   padding-inline: 20px;
-  height: 50%;
+  height: 100%;
   font-family: monospace;
 }
 
