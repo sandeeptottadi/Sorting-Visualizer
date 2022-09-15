@@ -6,7 +6,7 @@ export const Container = React.memo((props) => {
   const [time, setTime] = useState(Math.floor((10 / props.range) * 40) * 10);
   useEffect(() => {
     buildArray();
-  }, [props.range]);
+  }, [props.range, props.count]);
   function buildArray() {
     let newArray = [];
     for (let i = 0; i < props.range; i++) {
