@@ -26,12 +26,18 @@ export function animate_bubbleSort(array, time) {
         document.getElementById(
           `index-${mergesort[i][3]}`
         ).style.backgroundColor = "red";
-        document.getElementById(
-          `index-${mergesort[i][1]}`
-        ).style.height = `${Math.floor(mergesort[i][2] * 5)}px`;
-        document.getElementById(
-          `index-${mergesort[i][3]}`
-        ).style.height = `${Math.floor(mergesort[i][0] * 5)}px`;
+        document.getElementById(`index-${mergesort[i][1]}`).style.height =
+          window.innerWidth < 450
+            ? `${Math.floor(mergesort[i][2]) * 3}px`
+            : window.innerWidth < 600
+            ? `${Math.floor(mergesort[i][2]) * 4}px`
+            : `${Math.floor(mergesort[i][2]) * 5}px`;
+        document.getElementById(`index-${mergesort[i][3]}`).style.height =
+          window.innerWidth < 450
+            ? `${Math.floor(mergesort[i][0]) * 3}px`
+            : window.innerWidth < 600
+            ? `${Math.floor(mergesort[i][0]) * 4}px`
+            : `${Math.floor(mergesort[i][0]) * 5}px`;
       }, i * time);
       setTimeout(() => {
         document.getElementById(

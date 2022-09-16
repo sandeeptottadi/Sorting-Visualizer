@@ -49,7 +49,10 @@ function App() {
       <nav className="nav">
         <div className="title">Sorting Visualizer</div>
         <div className="elements" style={{ width: "fit-content" }}>
-          <div className="nav-element" onClick={() => setCount(count + 1)}>
+          <div
+            className="nav-element reset"
+            onClick={() => setCount(count + 1)}
+          >
             Reset
           </div>
           <input
