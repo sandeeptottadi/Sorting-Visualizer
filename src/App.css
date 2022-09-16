@@ -201,11 +201,11 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 @media (max-width: 460px) {
   .title {
-    font-size: 9px;
+    font-size: 8px;
     padding: 8px;
   }
   .nav {
-    font-size: 5px;
+    font-size: 4px;
   }
   .sort {
     margin: 5px;
@@ -216,7 +216,7 @@ input[type="range"]::-webkit-slider-runnable-track {
     width: 50px;
   }
   .nav-element:not(.sort) {
-    margin-left: 5px;
+    margin-left: 3px;
   }
   input[type="range"]::-webkit-slider-thumb {
     height: 10px;
