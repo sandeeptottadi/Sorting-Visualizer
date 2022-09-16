@@ -12,7 +12,11 @@ export const Container = React.memo((props) => {
     for (let i = 0; i < props.range; i++) {
       newArray.push(Math.floor(Math.random() * (110 - 5) + 5));
     }
-    setWidth((window.innerWidth / 2 - props.range * 2) / props.range);
+    if (window.innerWidth > 900) {
+      setWidth((window.innerWidth / 2.7 - props.range * 2) / props.range);
+    } else {
+      setWidth((window.innerWidth / 1.8 - props.range * 2) / props.range);
+    }
     props.arrayChanged(newArray, time);
     setArray(newArray);
     setTime(Math.ceil((10 / props.range) * 40) * 10);
@@ -23,7 +27,6 @@ export const Container = React.memo((props) => {
       document.getElementById(`index-${i}`).style.backgroundColor = "#6399f1";
     }
   }
-  console.log(Math.floor(window.innerHeight));
   return (
     <div
       style={{

@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { animate_bubbleSort } from "./algorithms/bubbleSort";
 
 function App() {
-  const [range, setRange] = useState(50);
+  const [range, setRange] = useState(60);
   const [algorithm, setAlgorithm] = useState("");
   const [array, setArray] = useState([]);
   const [count, setCount] = useState(0);
@@ -58,9 +58,9 @@ function App() {
           <input
             ref={input_range}
             type="range"
-            min="5"
+            min="4"
             max="100"
-            defaultValue={50}
+            defaultValue={60}
             onChange={() => inputChanged()}
           />
           <output id="rangevalue">: {range}</output>
