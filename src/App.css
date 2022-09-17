@@ -135,6 +135,8 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 .block {
+  color: white;
+  overflow: hidden;
   background-color: #6399f1;
 }
 
@@ -163,7 +165,7 @@ input[type="range"]::-webkit-slider-runnable-track {
     padding: 10px;
   }
   .nav {
-    font-size: 6px;
+    font-size: 8px;
   }
   input[type="range"] {
     width: 80px;
@@ -180,6 +182,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 @media (max-width: 650px) {
   .title {
+    display: none;
     font-size: 14px;
     padding: 10px;
   }

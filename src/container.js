@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 export const Container = React.memo((props) => {
   const [array, setArray] = useState([]);
   const [width, setWidth] = useState();
-  const [time, setTime] = useState(Math.floor((10 / props.range) * 40) * 10);
+  const [time, setTime] = useState(Math.floor((10 / props.range) * 40) * 5);
   useEffect(() => {
     buildArray();
   }, [props.range, props.count]);
@@ -19,7 +19,7 @@ export const Container = React.memo((props) => {
     }
     props.arrayChanged(newArray, time);
     setArray(newArray);
-    setTime(Math.ceil((10 / props.range) * 40) * 10);
+    setTime(Math.ceil((10 / props.range) * 40) * 5);
     reset();
   }
   function reset() {
@@ -38,9 +38,9 @@ export const Container = React.memo((props) => {
       {array.map((value, idx) => {
         return (
           <div
+            className="array-bar block"
             id={`index-${idx}`}
             key={idx}
-            className="block"
             style={{
               height:
                 window.innerWidth < 450
@@ -51,7 +51,9 @@ export const Container = React.memo((props) => {
               width: `${width}px`,
               marginLeft: "3px",
             }}
-          ></div>
+          >
+            {/* {props.range < 15 ? <div>{value}</div> : <div></div>} */}
+          </div>
         );
       })}
     </div>

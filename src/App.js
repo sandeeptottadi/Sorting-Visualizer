@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "./container";
 import { useEffect, useRef, useState } from "react";
 import { animate_bubbleSort } from "./algorithms/bubbleSort";
+import { mergeSort } from "./algorithms/mergeSort";
+import { animateMergeSort } from "./animations/mergeSortAnimation";
 
 function App() {
   const [range, setRange] = useState(60);
@@ -24,7 +26,8 @@ function App() {
     }
     switch (algorithm) {
       case "Merge":
-        alert(algorithm);
+        let [newArray, animations] = mergeSort(array);
+        animateMergeSort(animations, newArray, t);
         break;
       case "Bubble":
         animate_bubbleSort(array, t);
