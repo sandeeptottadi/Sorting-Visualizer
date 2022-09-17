@@ -21,13 +21,28 @@ export function animateMergeSort(animations, array, time) {
         if (animations[i].length === 2) {
           const [barOneIdx, newHeight] = animations[i];
           const barOneStyle = arrayBars[barOneIdx].style;
-          barOneStyle.height = `${newHeight * 5}px`;
+          barOneStyle.height =
+            window.innerWidth < 450
+              ? `${Math.floor(newHeight) * 3}px`
+              : window.innerWidth < 600
+              ? `${Math.floor(newHeight) * 4}px`
+              : `${Math.floor(newHeight) * 5}px`;
         } else {
           const [barOneIdx, newHeight1, barTwoIdx, newHeight2] = animations[i];
           const barOneStyle = arrayBars[barOneIdx].style;
           const barTowStyle = arrayBars[barTwoIdx].style;
-          barOneStyle.height = `${newHeight1 * 5}px`;
-          barTowStyle.height = `${newHeight2 * 5}px`;
+          barOneStyle.height =
+            window.innerWidth < 450
+              ? `${Math.floor(newHeight1) * 3}px`
+              : window.innerWidth < 600
+              ? `${Math.floor(newHeight1) * 4}px`
+              : `${Math.floor(newHeight1) * 5}px`;
+          barTowStyle.height =
+            window.innerWidth < 450
+              ? `${Math.floor(newHeight2) * 3}px`
+              : window.innerWidth < 600
+              ? `${Math.floor(newHeight2) * 4}px`
+              : `${Math.floor(newHeight2) * 5}px`;
         }
       }, i * time + time - 500);
     }
