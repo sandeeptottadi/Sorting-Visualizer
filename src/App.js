@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { animate_bubbleSort } from "./algorithms/bubbleSort";
 import { mergeSort } from "./algorithms/mergeSort";
 import { animateMergeSort } from "./animations/mergeSortAnimation";
+import { selectionSort } from "./algorithms/selectionSort";
+import { selectionSortAnimation } from "./animations/selectionSortAnimation";
 
 function App() {
   const [range, setRange] = useState(60);
@@ -39,7 +41,7 @@ function App() {
         alert(algorithm);
         break;
       case "Selection":
-        alert(algorithm);
+        selectionSortAnimation(selectionSort(array), t);
         break;
     }
   }
