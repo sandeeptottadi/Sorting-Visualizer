@@ -37,7 +37,7 @@ function App() {
       case "Quick":
         alert(algorithm);
         break;
-      case "Insertion":
+      case "heap":
         alert(algorithm);
         break;
       case "Selection":
@@ -81,8 +81,8 @@ function App() {
           <div className="nav-element" onClick={() => setAlgo("Quick")}>
             Quick Sort!
           </div>
-          <div className="nav-element" onClick={() => setAlgo("Insertion")}>
-            Insertion Sort!
+          <div className="nav-element" onClick={() => setAlgo("heap")}>
+            Heap Sort!
           </div>
           <div className="nav-element" onClick={() => setAlgo("Selection")}>
             Selection Sort!
