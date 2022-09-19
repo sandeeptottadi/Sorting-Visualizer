@@ -7,6 +7,8 @@ import { mergeSort } from "./algorithms/mergeSort";
 import { animateMergeSort } from "./animations/mergeSortAnimation";
 import { selectionSort } from "./algorithms/selectionSort";
 import { selectionSortAnimation } from "./animations/selectionSortAnimation";
+import { quickSort } from "./algorithms/quickSort";
+import { quickSortAnimation } from "./animations/quickSortAnimations";
 
 function App() {
   const [range, setRange] = useState(60);
@@ -35,7 +37,7 @@ function App() {
         animate_bubbleSort(array, t);
         break;
       case "Quick":
-        alert(algorithm);
+        quickSortAnimation(quickSort(array), t);
         break;
       case "heap":
         alert(algorithm);
