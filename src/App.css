@@ -182,7 +182,6 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 @media (max-width: 650px) {
   .title {
-    display: none;
     font-size: 14px;
     padding: 10px;
   }
