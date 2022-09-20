@@ -1,17 +1,24 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Form } from "react-bootstrap";
 import { Container } from "./container";
 import { useEffect, useRef, useState } from "react";
-import { animate_bubbleSort } from "./algorithms/bubbleSort";
-import { mergeSort } from "./algorithms/mergeSort";
+import { bubbleSort } from "./algorithms/Ascending/bubbleSort";
+import { bubbleSort_d } from "./algorithms/Descending/bubbleSort";
+import { animate_bubbleSort } from "./animations/bubbleSortAnimation";
+import { mergeSort } from "./algorithms/Ascending/mergeSort";
+import { mergeSort_d } from "./algorithms/Descending/mergeSort";
 import { animateMergeSort } from "./animations/mergeSortAnimation";
-import { selectionSort } from "./algorithms/selectionSort";
+import { selectionSort } from "./algorithms/Ascending/selectionSort";
+import { selectionSort_d } from "./algorithms/Descending/selectionSort";
 import { selectionSortAnimation } from "./animations/selectionSortAnimation";
-import { quickSort } from "./algorithms/quickSort";
+import { quickSort } from "./algorithms/Ascending/quickSort";
+import { quickSort_d } from "./algorithms/Descending/quickSort";
 import { quickSortAnimation } from "./animations/quickSortAnimations";
 
 function App() {
   const [range, setRange] = useState(60);
+  const [order, setOrder] = useState("Ascending");
   const [algorithm, setAlgorithm] = useState("");
   const [array, setArray] = useState([]);
   const [count, setCount] = useState(0);
@@ -28,30 +35,52 @@ function App() {
       alert("Please select a algorithm");
       return;
     }
-    switch (algorithm) {
-      case "Merge":
-        let [newArray, animations] = mergeSort(array);
-        animateMergeSort(animations, newArray, t);
-        break;
-      case "Bubble":
-        animate_bubbleSort(array, t);
-        break;
-      case "Quick":
-        await quickSortAnimation(quickSort(array), t, array).then(() => {
-          console.log("sorted!");
-        });
-        break;
-      case "heap":
-        alert(algorithm);
-        break;
-      case "Selection":
-        selectionSortAnimation(selectionSort(array), t);
-        break;
+    if (order === "Ascending") {
+      switch (algorithm) {
+        case "Merge":
+          let [newArray, animations] = mergeSort(array);
+          animateMergeSort(animations, newArray, t);
+          break;
+        case "Bubble":
+          animate_bubbleSort(bubbleSort(array), t);
+          break;
+        case "Quick":
+          await quickSortAnimation(quickSort(array), t, array);
+          break;
+        case "heap":
+          alert(algorithm);
+          break;
+        case "Selection":
+          selectionSortAnimation(selectionSort(array), t);
+          break;
+      }
+    } else {
+      switch (algorithm) {
+        case "Merge":
+          let [newArray, animations] = mergeSort_d(array);
+          animateMergeSort(animations, newArray, t);
+          break;
+        case "Bubble":
+          animate_bubbleSort(bubbleSort_d(array), t);
+          break;
+        case "Quick":
+          await quickSortAnimation(quickSort_d(array), t, array);
+          break;
+        case "heap":
+          alert(algorithm);
+          break;
+        case "Selection":
+          selectionSortAnimation(selectionSort_d(array), t);
+          break;
+      }
     }
   }
   function arrayChanged(newArray, time) {
     setArray(newArray);
     setTime(time);
+  }
+  function setorder() {
+    order === "Ascending" ? setOrder("Descending") : setOrder("Ascending");
   }
   return (
     <div className="App">
@@ -90,6 +119,17 @@ function App() {
           </div>
           <div className="nav-element" onClick={() => setAlgo("Selection")}>
             Selection Sort!
+          </div>
+          <div className="nav-element switch">
+            Descending :
+            <Form>
+              <Form.Check
+                onChange={() => setorder()}
+                variant="info"
+                type="switch"
+                id="custom-switch"
+              />
+            </Form>
           </div>
         </div>
       </nav>
