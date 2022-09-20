@@ -2,7 +2,6 @@ export function animateMergeSort(animations, array, time) {
   for (let i = 0; i < animations.length; i++) {
     const arrayBars = document.getElementsByClassName("array-bar");
     const isColorChange = i % 3 !== 2;
-    console.log(isColorChange);
     if (isColorChange) {
       const [barOneIdx, barTwoIdx] = animations[i];
       const barOneStyle = arrayBars[barOneIdx].style;

@@ -1,6 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Container } from "./container";
 import { useEffect, useRef, useState } from "react";
 import { bubbleSort } from "./algorithms/Ascending/bubbleSort";
@@ -22,8 +22,10 @@ function App() {
   const [algorithm, setAlgorithm] = useState("");
   const [array, setArray] = useState([]);
   const [count, setCount] = useState(0);
+  const [disabled, setDisabled] = useState(false);
   const [t, setTime] = useState();
   const input_range = useRef("input_range");
+
   function inputChanged() {
     setRange(input_range.current.value);
   }
@@ -35,45 +37,68 @@ function App() {
       alert("Please select a algorithm");
       return;
     }
+    document.getElementById("reset").classList.add("disabled");
+    document.getElementById("sort").classList.add("disabled");
+    let length;
+    let animation_array;
     if (order === "Ascending") {
       switch (algorithm) {
         case "Merge":
           let [newArray, animations] = mergeSort(array);
+          length = animations.length;
           animateMergeSort(animations, newArray, t);
           break;
         case "Bubble":
-          animate_bubbleSort(bubbleSort(array), t);
+          animation_array = bubbleSort(array);
+          length = animation_array.length;
+          animate_bubbleSort(animation_array, t);
           break;
         case "Quick":
-          await quickSortAnimation(quickSort(array), t, array);
+          animation_array = quickSort(array);
+          length = animation_array.length;
+          await quickSortAnimation(animation_array, t, array);
           break;
         case "heap":
           alert(algorithm);
           break;
         case "Selection":
-          selectionSortAnimation(selectionSort(array), t);
+          animation_array = selectionSort(array);
+          length = animation_array.length;
+          selectionSortAnimation(animation_array, t);
           break;
       }
     } else {
       switch (algorithm) {
         case "Merge":
           let [newArray, animations] = mergeSort_d(array);
+          length = animations.length;
           animateMergeSort(animations, newArray, t);
           break;
         case "Bubble":
-          animate_bubbleSort(bubbleSort_d(array), t);
+          animation_array = bubbleSort_d(array);
+          length = animation_array.length;
+          animate_bubbleSort(animation_array, t);
           break;
         case "Quick":
-          await quickSortAnimation(quickSort_d(array), t, array);
+          animation_array = quickSort_d(array);
+          length = animation_array.length;
+          await quickSortAnimation(animation_array, t, array);
           break;
         case "heap":
           alert(algorithm);
           break;
         case "Selection":
-          selectionSortAnimation(selectionSort_d(array), t);
+          animation_array = selectionSort_d(array);
+          length = animation_array.length;
+          selectionSortAnimation(animation_array, t);
           break;
       }
     }
+    console.log(length);
+    setTimeout(() => {
+      document.getElementById("reset").classList.remove("disabled");
+      document.getElementById("sort").classList.remove("disabled");
+    }, length * t);
   }
   function arrayChanged(newArray, time) {
     setArray(newArray);
@@ -88,8 +113,13 @@ function App() {
         <div className="title">Sorting Visualizer</div>
         <div className="elements" style={{ width: "fit-content" }}>
           <div
+            id="reset"
             className="nav-element reset"
-            onClick={() => setCount(count + 1)}
+            onClick={() =>
+              document.getElementById("reset").classList.contains("disabled")
+                ? ""
+                : setCount(count + 1)
+            }
           >
             Reset
           </div>
@@ -98,11 +128,25 @@ function App() {
             type="range"
             min="4"
             max="100"
+            id="range"
             defaultValue={60}
-            onChange={() => inputChanged()}
+            onChange={() =>
+              document.getElementById("reset").classList.contains("disabled")
+                ? (document.getElementById("range").value =
+                    input_range.current.value)
+                : inputChanged()
+            }
           />
           <output id="rangevalue">: {range}</output>
-          <div className="nav-element sort" onClick={() => sort()}>
+          <div
+            id="sort"
+            className="nav-element sort"
+            onClick={() =>
+              document.getElementById("reset").classList.contains("disabled")
+                ? ""
+                : sort()
+            }
+          >
             {algorithm} sort!
           </div>
           <div className="nav-element" onClick={() => setAlgo("Merge")}>

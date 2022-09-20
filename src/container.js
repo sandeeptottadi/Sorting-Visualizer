@@ -8,6 +8,9 @@ export const Container = React.memo((props) => {
     buildArray();
   }, [props.range, props.count]);
   function buildArray() {
+    if (document.getElementById("reset").classList.contains("disabled")) {
+      return;
+    }
     let newArray = [];
     for (let i = 0; i < props.range; i++) {
       newArray.push(Math.floor(Math.random() * (110 - 5) + 5));
@@ -23,8 +26,12 @@ export const Container = React.memo((props) => {
     reset();
   }
   function reset() {
-    for (let i = 0; i < array.length; i++) {
-      document.getElementById(`index-${i}`).style.backgroundColor = "#6399f1";
+    if (document.getElementById("reset").classList.contains("disabled")) {
+      return;
+    } else {
+      for (let i = 0; i < array.length; i++) {
+        document.getElementById(`index-${i}`).style.backgroundColor = "#6399f1";
+      }
     }
   }
   return (
