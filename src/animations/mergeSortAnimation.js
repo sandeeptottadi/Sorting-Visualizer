@@ -46,4 +46,9 @@ export function animateMergeSort(animations, array, time) {
       }, i * time + time - 500);
     }
   }
+  setTimeout(() => {
+    for (let i = 0; i < array.length; i++) {
+      document.getElementById(`index-${i}`).style.backgroundColor = "#B578E8";
+    }
+  }, time * animations.length);
 }
