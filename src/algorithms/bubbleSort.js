@@ -5,10 +5,10 @@ export function animate_bubbleSort(array, time) {
       setTimeout(() => {
         document.getElementById(
           `index-${mergesort[i][0]}`
-        ).style.backgroundColor = "green";
+        ).style.backgroundColor = "#6CDB7B";
         document.getElementById(
           `index-${mergesort[i][1]}`
-        ).style.backgroundColor = "green";
+        ).style.backgroundColor = "#6CDB7B";
       }, i * time);
       setTimeout(() => {
         document.getElementById(
@@ -22,10 +22,10 @@ export function animate_bubbleSort(array, time) {
       setTimeout(() => {
         document.getElementById(
           `index-${mergesort[i][1]}`
-        ).style.backgroundColor = "red";
+        ).style.backgroundColor = "#DD5C5C";
         document.getElementById(
           `index-${mergesort[i][3]}`
-        ).style.backgroundColor = "red";
+        ).style.backgroundColor = "#DD5C5C";
         document.getElementById(`index-${mergesort[i][1]}`).style.height =
           window.innerWidth < 450
             ? `${Math.floor(mergesort[i][2]) * 3}px`

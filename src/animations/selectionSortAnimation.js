@@ -1,14 +1,13 @@
 export function selectionSortAnimation(animations, time) {
-  let prev = null;
   for (let i = 0; i < animations.length; i++) {
     if (animations[i].length === 2) {
       setTimeout(() => {
         document.getElementById(
           `index-${animations[i][0]}`
-        ).style.backgroundColor = "green";
+        ).style.backgroundColor = "#6CDB7B";
         document.getElementById(
           `index-${animations[i][1]}`
-        ).style.backgroundColor = "green";
+        ).style.backgroundColor = "#6CDB7B";
       }, i * time);
       setTimeout(() => {
         document.getElementById(
@@ -22,10 +21,10 @@ export function selectionSortAnimation(animations, time) {
       setTimeout(() => {
         document.getElementById(
           `index-${animations[i][0]}`
-        ).style.backgroundColor = "red";
+        ).style.backgroundColor = "#DD5C5C";
         document.getElementById(
           `index-${animations[i][2]}`
-        ).style.backgroundColor = "red";
+        ).style.backgroundColor = "#DD5C5C";
         document.getElementById(`index-${animations[i][0]}`).style.height =
           window.innerWidth < 450
             ? `${Math.floor(animations[i][1]) * 3}px`
@@ -40,12 +39,17 @@ export function selectionSortAnimation(animations, time) {
             : `${Math.floor(animations[i][3]) * 5}px`;
       }, i * time);
       setTimeout(() => {
-        document.getElementById(
-          `index-${animations[i][0]}`
-        ).style.backgroundColor = "#6399F1";
-        document.getElementById(
-          `index-${animations[i][2]}`
-        ).style.backgroundColor = "#6399F1";
+        animations[i][0] === animations[i][2]
+          ? (document.getElementById(
+              `index-${animations[i][0]}`
+            ).style.backgroundColor = "#B578E8")
+          : (document.getElementById(
+              `index-${animations[i][0]}`
+            ).style.backgroundColor = "#B578E8")(
+              (document.getElementById(
+                `index-${animations[i][2]}`
+              ).style.backgroundColor = "#6399F1")
+            );
       }, i * time + time);
     }
   }

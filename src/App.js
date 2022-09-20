@@ -23,7 +23,7 @@ function App() {
   function setAlgo(algo) {
     setAlgorithm(algo);
   }
-  function sort() {
+  async function sort() {
     if (!algorithm) {
       alert("Please select a algorithm");
       return;
@@ -37,7 +37,9 @@ function App() {
         animate_bubbleSort(array, t);
         break;
       case "Quick":
-        quickSortAnimation(quickSort(array), t);
+        await quickSortAnimation(quickSort(array), t, array).then(() => {
+          console.log("sorted!");
+        });
         break;
       case "heap":
         alert(algorithm);

@@ -8,7 +8,11 @@ export function selectionSort(array) {
         min = j;
       }
     }
-    animations.push([i, array[min], min, array[i]]);
+    if (min === i || i === array.length - 1) {
+      animations.push([i, array[i], i, array[i]]);
+    } else {
+      animations.push([i, array[min], min, array[i]]);
+    }
     [array[i], array[min]] = [array[min], array[i]];
   }
   return animations;
