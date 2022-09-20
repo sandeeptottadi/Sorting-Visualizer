@@ -64,7 +64,7 @@
   background-color: #333;
 }
 
-.nav-element:not(.sort) {
+.nav-element:not(.sort, .switch) {
   /* font-weight: 200; */
   position: relative;
   margin: 15px;
@@ -86,6 +86,12 @@
 .reset {
   color: red;
   font-weight: 500;
+}
+
+.switch {
+  margin: 15px;
+
+  color: #b578e8;
 }
 
 input[type="range"] {

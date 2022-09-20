@@ -120,16 +120,8 @@ function App() {
           <div className="nav-element" onClick={() => setAlgo("Selection")}>
             Selection Sort!
           </div>
-          <div className="nav-element switch">
-            Descending :
-            <Form>
-              <Form.Check
-                onChange={() => setorder()}
-                variant="info"
-                type="switch"
-                id="custom-switch"
-              />
-            </Form>
+          <div onClick={() => setorder()} className="nav-element switch">
+            <div>{order}</div>
           </div>
         </div>
       </nav>
